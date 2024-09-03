@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    
+    <!-- json logger -->
+    <appender name="json" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
+            <appendLineSeparator>true</appendLineSeparator>
+            <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
+                <prettyPrint>false</prettyPrint>
+            </jsonFormatter>
+        </layout>
+    </appender>
+
+    <!-- develop deploy server log -->
+    <springProfile name="develop">
+        <logger name="org.springframework" level="WARN" additivity="false">
+            <appender-ref ref="json" />
+        </logger>
+        
+        <root level="DEBUG">
+            <appender-ref ref="json" />
+        </root>
+    </springProfile>
+ 
+    <!-- production deploy server log -->
+    <springProfile name="production">
+        
+        <logger name="org.springframework" level="WARN" additivity="false">
+            <appender-ref ref="json" />
+        </logger>
+        
+        <root level="WARN">
+            <appender-ref ref="json" />
+        </root>
+    </springProfile>
+ 
+    <!-- local test log -->
+    <springProfile name="!(develop| production)">
+        <logger name="org.springframework" level="WARN" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+        
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+  
+</configuration>

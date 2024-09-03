@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cesco.api.cesnetapi.res.mappers.RestaurantPoseMapper">
+    
+    <insert id="setDailySales" parameterType="com.cesco.api.cesnetapi.res.models.DailySales">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_DailySales
+            (
+                #{HD_CODE}
+        ,       #{SP_CODE}
+        ,       #{SP_NAME}
+        ,       #{BIZ_NO}
+        ,       #{ERP_CODE}
+        ,       #{SALE_DATE}
+        ,       #{TOTAL_AMT}
+        ,       #{SALE_AMT}
+        ,       #{NET_AMT}
+        ,       #{TOTAL_DC_AMT}
+        ,       #{VAT_AMT}
+        ,       #{BILL_QTY}
+        ,       #{NORMAL_QTY}
+        ,       #{NORMAL_AMT}
+        ,       #{RETURN_QTY}
+        ,       #{RETURN_AMT}
+        ,       #{SERVICE_AMT}
+        ,       #{CASH_QTY}
+        ,       #{CASH_AMT}
+        ,       #{CARD_QTY}
+        ,       #{CARD_AMT}
+        ,       #{TICK_QTY}
+        ,       #{TICK_AMT}
+        ,       #{POINT_QTY}
+        ,       #{POINT_AMT}
+        ,       #{GIFT_QTY}
+        ,       #{GIFT_AMT}
+        ,       #{PREPAID_CARD_QTY}
+        ,       #{PREPAID_CARD_AMT}
+        ,       #{OCB_QTY}
+        ,       #{OCB_AMT}
+        ,       #{CORP_DC_QTY}
+        ,       #{CORP_DC_AMT}
+        ,       #{NORMAIL_DC_QTY}
+        ,       #{NORMAIL_DC_AMT}
+        ,       #{SERVICE_DC_QTY}
+        ,       #{SERVICE_DC_AMT}
+        ,       #{COUPON_DC_QTY}
+        ,       #{COUPON_DC_AMT}
+        ,       #{CUST_DC_QTY}
+        ,       #{CUST_DC_AMT}
+        ,       #{CUST_ACCUM_POINT}
+        ,       #{CUST_USE_POINT}
+        ,       #{CUST_CNT}
+        ,       #{DU_DC_QTY}
+        ,       #{DU_DC_AMT}
+        ,       #{EXCHANGE_QTY}
+        ,       #{EXCHANGE_AMT}
+        ,       #{CO_QTY}
+        ,       #{CO_AMT}
+        ,       #{EMONEY_QTY}
+        ,       #{EMONEY_AMT}
+        ,       #{ENURI_QTY}
+        ,       #{ENURI_AMT}
+        ,       #{CASH_CANCEL_QTY}
+        ,       #{CASH_CANCEL_AMT}
+        ,       #{CARD_CANCEL_QTY}
+        ,       #{CARD_CANCEL_AMT}
+        ,       #{TICK_CANCEL_QTY}
+        ,       #{TICK_CANCEL_AMT}
+        ,       #{POINT_CANCEL_QTY}
+        ,       #{POINT_CANCEL_AMT}
+        ,       #{GIFT_CANCEL_QTY}
+        ,       #{GIFT_CANCEL_AMT}
+        ,       #{PREPAID_CANCEL_QTY}
+        ,       #{PREPAID_CANCEL_AMT}
+        ,       #{OCB_CANCEL_QTY}
+        ,       #{OCB_CANCEL_AMT}
+        ,       #{EXCHANGE_CANCEL_QTY}
+        ,       #{EXCHANGE_CANCEL_AMT}
+        ,       #{CO_CANCEL_QTY}
+        ,       #{CO_CANCEL_AMT}
+        ,       #{EMONEY_CANCEL_QTY}
+        ,       #{EMONEY_CANCEL_AMT}
+        ,       #{PROMOTION_DC_QTY}
+        ,       #{PROMOTION_DC_AMT}
+                )
+        }
+    </insert>
+
+    <insert id="setFranchises" parameterType="com.cesco.api.cesnetapi.res.models.Franchises">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_Franchises
+            (
+                #{HD_CODE}
+            ,	#{SP_CODE}
+            ,	#{SP_NAME}
+            ,	#{BIZ_NO}
+            ,	#{OPEN_FLAG}
+            ,	#{ERP_SP_CODE}
+            ,	#{MASTER_NAME}
+            ,	#{TEL_NO}
+            ,	#{SP_TYPE}
+            ,	#{AREA_CODE}
+            ,	#{SALE_CLASS_CODE}
+            ,	#{SALE_CLASS_NAME}
+            ,	#{ADDRESS1}
+            ,	#{ADDRESS2}
+            ,	#{BRAND_CODE}
+            ,	#{BRAND_NAME}
+            )
+        }
+    </insert>
+
+    <insert id="setSalesDtl" parameterType="com.cesco.api.cesnetapi.res.models.SalesDtl">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_SalesDtl
+            (
+                #{HD_CODE}
+            ,	#{SP_CODE}
+            ,	#{SP_NAME}
+            ,	#{BIZ_NO}
+            ,	#{ERP_CODE}
+            ,	#{SALE_DATE}
+            ,	#{TIME_SLOT}
+            ,	#{SALE_DAY}
+            ,	#{BILL_QTY}
+            ,	#{TOTAL_AMT}
+            ,	#{SALE_AMT}
+            ,	#{NET_AMT}
+            ,	#{BILL_AMT}
+            )
+        }
+    </insert>
+
+    <insert id="setItemlist" parameterType="com.cesco.api.cesnetapi.res.models.ItemList">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_Itemlist
+            (
+                #{HD_CODE}				
+            ,   #{SP_CODE}				
+            ,   #{ITEM_CODE}				
+            ,   #{ITEM_NAME}				
+            ,   #{SHORT_NAME}				
+            ,   #{EMGLICH_NAME}			
+            ,   #{QTY_NAME}				
+            ,   #{LARGE_SCALE}			
+            ,   #{LARGE_SCALE_NM}			
+            ,   #{MEDIUM_SCALE}			
+            ,   #{MEDIUM_SCALE_MN}		
+            ,   #{SMALL_SCALE}			
+            ,   #{SMALL_SCALE_NM}			
+            ,   #{ITEM_COST}				
+            ,   #{ITEM_PRICE}				
+            ,   #{VAT_RATE}				
+            ,   #{VAT_RATE_FG}			
+            ,   #{USE_FLAG}				
+            ,   #{TAX_FLAG}				
+            ,   #{TAX_FLAG_NM}			
+            ,   #{PRICE_FLAG}				
+            ,   #{PRICE_FLAG_NM}			
+            ,   #{SUB_MENU_TYPE}			
+            ,   #{SERVICE_FLAG}			
+            ,   #{ITEM_TYPE}				
+            ,   #{ITEM_TYPE_NM}			
+            ,   #{ITEM_IMG_URL}			
+            ,   #{ITEM_DESCRIPTION}		
+            ,   #{ITEM_DESCRIPTION_ENG}	
+            ,   #{SALE_START_TIME}		
+            ,   #{SALE_END_TIME}			
+            ,   #{DAILY_SALE_QTY}			
+            ,   #{KIOSK_SUB_MENU_TYPE}	
+            ,   #{KIOSK_DISPLAY_ICON}		
+            ,   #{SALE_DAYS}				
+            ,   #{SOLD_OUT}				
+            ,   #{ORDER_GROUP_FG}
+            )
+        }
+    </insert>
+
+    <insert id="setSalesreceipt" parameterType="com.cesco.api.cesnetapi.res.models.SalesReceipt">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_SalesReceipt
+            (
+                #{HD_CODE}
+            ,	#{SP_CODE}
+            ,	#{SP_NAME}
+            ,	#{BIZ_NO}
+            ,	#{ERP_CODE}
+            ,	#{SALE_DATE}
+            ,	#{POS_NO}
+            ,	#{BILL_NO}
+            ,	#{SALE_FLAG}
+            ,	#{CANCEL_FLAG}
+            ,	#{ORDER_DATETIME}
+            ,	#{SERVE_DATETIME}
+            ,	#{ORG_SALE_NO}
+            ,	#{TOTAL_AMT}
+            ,	#{SALE_AMT}
+            ,	#{NET_AMT}
+            ,	#{TOTAL_DC_AMT}
+            ,	#{VAT_AMT}
+            ,	#{SERVICE_AMT}
+            ,	#{CASH_AMT}
+            ,	#{CARD_AMT}
+            ,	#{TICK_AMT}
+            ,	#{POINT_AMT}
+            ,	#{GIFT_AMT}
+            ,	#{PREPAID_CARD_AMT}
+            ,	#{OCB_AMT}
+            ,	#{CORP_DC_AMT}
+            ,	#{NORMAIL_DC_AMT}
+            ,	#{SERVICE_DC_AMT}
+            ,	#{COUPON_DC_AMT}
+            ,	#{CUST_DC_AMT}
+            ,	#{CUST_ACCUM_POINT}
+            ,	#{CUST_USE_POINT}
+            ,	#{CUST_CNT}
+            ,	#{EXCHANGE_AMT}
+            ,	#{CO_AMT}
+            ,	#{EMONEY_AMT}
+            ,	#{ENURI_AMT}
+            ,	#{PROMOTION_DC_AMT}
+            ,	#{CUST_NO}
+            ,	#{CUST_CARD_NO}
+            ,	#{SALE_SP_CODE}
+            )
+        }
+    </insert>
+
+    <insert id="setSalesreceiptDtl" parameterType="com.cesco.api.cesnetapi.res.models.SalesReceiptDtlDe">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_SalesReceiptDtl
+            (
+                #{HEADER_CNT}
+            ,   #{DETAIL_CNT}
+            ,   #{CASH_CNT}
+            ,   #{CARD_CNT}
+            ,   #{HD_CODE}
+            ,   #{SP_CODE}
+            ,   #{SP_NAME}
+            ,   #{BIZ_NO}
+            ,   #{ERP_CODE}
+            ,   #{SALE_DATE}
+            ,   #{POS_NO}
+            ,   #{BILL_NO}
+            ,   #{SALE_FLAG}
+            ,   #{CANCEL_FLAG}
+            ,   #{ORDER_DATETIME}
+            ,   #{SERVE_DATETIME}
+            ,   #{ORG_SALE_NO}
+            ,   #{TOTAL_AMT}
+            ,   #{SALE_AMT}
+            ,   #{NET_AMT}
+            ,   #{TOTAL_DC_AMT}
+            ,   #{VAT_AMT}
+            ,   #{SERVICE_AMT}
+            ,   #{CASH_AMT}
+            ,   #{CARD_AMT}
+            ,   #{TICK_AMT}
+            ,   #{POINT_AMT}
+            ,   #{GIFT_AMT}
+            ,   #{PREPAID_CARD_AMT}
+            ,   #{OCB_AMT}
+            ,   #{CORP_DC_AMT}
+            ,   #{NORMAIL_DC_AMT}
+            ,   #{SERVICE_DC_AMT}
+            ,   #{COUPON_DC_AMT}
+            ,   #{CUST_DC_AMT}
+            ,   #{CUST_ACCUM_POINT}
+            ,   #{CUST_USE_POINT}
+            ,   #{CUST_CNT}
+            ,   #{EXCHANGE_AMT}
+            ,   #{CO_AMT}
+            ,   #{EMONEY_AMT}
+            ,   #{ENURI_AMT}
+            ,   #{PROMOTION_DC_AMT}
+            ,   #{RECIEPT_AMT}
+            ,   #{CHANGE_AMT}
+            ,   #{CUST_NO}
+            ,   #{CUST_CARD_NO}
+            ,   #{SALE_SP_CODE}
+            )
+        }
+    </insert>
+
+    <insert id="setSalesreceiptDtlMapp" parameterType="com.cesco.api.cesnetapi.res.models.SalesReceiptDtlMappDe">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_SalesReceiptDtlMapp
+            (
+                #{HD_CODE}
+            ,	#{SP_CODE}
+            ,	#{SALE_DATE}
+            ,	#{POS_NO}
+            ,	#{BILL_NO}
+            ,	#{DETAIL_NO}
+            ,	#{ITEM_CODE}
+            ,	#{ITEM_NAME}
+            ,	#{QTY}
+            ,	#{TOTAL_AMT}
+            ,	#{SALE_AMT}
+            ,	#{NET_AMT}
+            ,	#{TOTAL_DC_AMT}
+            ,	#{VAT_AMT}
+            ,	#{POINT_AMT}
+            ,	#{CORP_DC_AMT}
+            ,	#{NORMAIL_DC_AMT}
+            ,   #{SERVICE_DC_AMT}
+            ,	#{COUPON_DC_AMT}
+            ,	#{CUST_DC_AMT}
+            ,	#{PROMOTION_DC_AMT}
+            ,	#{CUST_ACCUM_POINT}
+            ,	#{CUST_USE_POINT}
+            ,	#{SALE_FLAG}
+            ,	#{ORDER_DATETIME}
+            ,	#{SERVE_DATETIME}
+            ,	#{ITEM_PRICE}
+            ,	#{SUB_MENU_TYPE}
+            ,	#{SUB_MENU_FLAG}
+            ,	#{PARENT_DETAIL_NO}
+            ,	#{SUB_MENU_COUNT}
+            ,	#{CASH_AMT}
+            ,	#{CARD_AMT}
+            ,	#{TICK_AMT}
+            ,	#{GIFT_AMT}
+            ,	#{PREPAID_CARD_AMT}
+            ,	#{OCB_AMT}
+            ,	#{CO_AMT}
+            ,	#{EXCHANGE_AMT}
+            ,	#{EMONEY_AMT}
+            ,	#{ENURI_AMT}
+            ,	#{CHARGE_AMT}
+            ,	#{ITEM_TAX_FLAG}
+            ,   #{ERP_CODE}
+            ,   #{ERP_ITEM_CODE}
+            ,   #{SALE_SP_CODE}
+            ,   #{BARCODE}
+            ,   #{SP_NAME}
+            ,   #{BIZ_NO}
+            )
+        }
+    </insert>
+
+    <insert id="setSalesreceiptDtlCash" parameterType="com.cesco.api.cesnetapi.res.models.SalesReceiptDtlCashDe">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_SalesReceiptDtlCash
+            (
+                #{HD_CODE}
+            ,	#{SP_CODE}
+            ,   #{BIZ_NO}
+            ,   #{ERP_CODE} 
+            ,	#{SALE_DATE}
+            ,	#{POS_NO}
+            ,	#{BILL_NO}
+            ,	#{CASH_SLIP_NO}
+            ,	#{IDENTITY_NO}
+            ,	#{IDENTITY_TYPE}
+            ,	#{TRADE_FLAG}
+            ,	#{TRADE_FLAG_NM}
+            ,	#{SP_NAME}
+            ,	#{SALE_SP_CODE}
+            ,	#{APPR_AMT}
+            ,	#{APPR_FLAG}
+            ,	#{APPR_NO}
+            ,	#{APPR_DATETIME}
+            ,	#{VAT_AMT}
+            ,	#{SERVICE_AMT}
+            ,	#{SALE_FLAG}
+            )
+        }
+    </insert>
+
+    <insert id="setSalesreceptdtlCard" parameterType="com.cesco.api.cesnetapi.res.models.SalesReceiptDtlCardDe">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_SalesReceiptDtlCard
+            (
+                #{HD_CODE}
+            ,	#{SP_CODE}
+            ,	#{SALE_DATE}
+            ,	#{POS_NO}
+            ,	#{BILL_NO}
+            ,	#{CARD_SLIP_NO}
+            ,	#{CARD_NO}
+            ,	#{APPR_AMT}
+            ,	#{INSTALLMENT}
+            ,	#{APPR_NO}
+            ,	#{APPR_DATETIME}
+            ,	#{APPR_FLAG}
+            ,	#{ISSUER_CODE}
+            ,	#{ISSUER_NAME}
+            ,	#{ACQUIRER_CODE}
+            ,	#{ACQUIRER_NAME}
+            ,	#{CORP_DC_AMT}
+            ,	#{VAT_AMT}
+            ,	#{SERVICE_AMT}
+            ,	#{SALE_FLAG}
+            ,	#{ERP_CODE}
+            ,	#{SP_NAME}
+            ,	#{SALES_SP_CODE}
+            ,	#{BIZ_NO}
+            )
+        }
+    </insert>
+
+    <insert id="setSalereceiptdtlCorp" parameterType="com.cesco.api.cesnetapi.res.models.SalesReceiptDtlCorpDe">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_SalesReceiptDtlCorp
+            (
+                #{HD_CODE}
+            ,	#{SP_CODE}
+            ,	#{SALE_DATE}
+            ,	#{POS_NO}
+            ,	#{BILL_NO}
+            ,	#{CORP_SLIP_NO}
+            ,	#{CARD_NO}
+            ,	#{ALLOT_RATE}
+            ,	#{ALLOT_FLAG}
+            ,	#{VALID_TERM}
+            ,	#{APPR_NO}
+            ,	#{APPR_DATETIME}
+            ,	#{APPR_FLAG}
+            ,	#{SALE_FLAG}
+            ,	#{ORG_APPR_DATE}
+            ,	#{CORP_CODE}
+            ,	#{CORP_NAME}
+            ,	#{CORP_DC_AMT}
+            ,	#{SALE_POINT}
+            ,	#{USABLE_POINT}
+            ,	#{USE_POINT}
+            ,	#{REMAIN_POINT}
+            ,	#{CARD_LEN}
+            ,	#{CARD_DATA}
+            ,	#{WCC}
+            ,	#{PAYMENT_FLAG}
+            ,	#{PROC_FLAG}
+            ,	#{MSG}
+            ,	#{ERP_CODE}
+            ,	#{SP_NAME}
+            ,	#{SALE_SP_CODE}
+            ,	#{BIZ_NO}
+            )
+        }
+    </insert>
+
+    <insert id="setSalesreceptdtlPrepaidCard" parameterType="com.cesco.api.cesnetapi.res.models.SalesReceiptDtlPrepaidCard">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_SalesReceiptDtlPrepaidCard
+            (
+                #{SP_CODE} 
+            ,   #{POS_NO} 
+            ,   #{ERP_CODE} 
+            ,   #{SALE_FLAG} 
+            ,   #{PREPAID_CODE} 
+            ,   #{WCC} 
+            ,   #{PROC_FLAG} 
+            ,   #{ORG_APPR_DATE} 
+            ,   #{CARD_DATA} 
+            ,   #{APPR_NO} 
+            ,   #{PAYMENT_FLAG} 
+            ,   #{SALE_DATE} 
+            ,   #{APPR_FLAG} 
+            ,   #{MSG} 
+            ,   #{PREPAID_SLIP_NO} 
+            ,   #{HD_CODE} 
+            ,   #{SP_NAME} 
+            ,   #{CARD_NO} 
+            ,   #{PREPAID_NAME} 
+            ,   #{APPR_DATETIME} 
+            ,   #{SALE_SP_CODE} 
+            ,   #{BIZ_NO} 
+            ,   #{CARD_LEN} 
+            ,   #{BILL_NO} 
+            )
+        }
+    </insert>
+
+    <insert id="setPrepaidCardSale" parameterType="com.cesco.api.cesnetapi.res.models.PrepaidCardSale">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_PrepaidCardSaleHead
+            (
+                #{HD_CODE}
+            ,    #{SP_CODE}
+            ,    #{SP_NAME}
+            ,    #{BIZ_NO}  
+            ,    #{ERP_CODE}
+            ,    #{SALE_DATE}  
+            ,    #{PREPAID_SALE_CNT}
+            ,    #{PREPAID_SALE_AMT}
+            ,    #{PREPAID_SALE_NORMAL_CNT}
+            ,    #{PREPAID_SALE_NORMAL_AMT}
+            ,    #{PREPAID_SALE_CANCEL_CNT}
+            ,    #{PREPAID_SALE_CANCEL_AMT}
+            ,    #{PREPAID_CHARGE_CNT}
+            ,    #{PREPAID_CHARGE_AMT}
+            ,    #{PREPAID_CHARGE_NORMAL_CNT}
+            ,    #{PREPAID_CHARGE_NORMAL_AMT}
+            ,    #{PREPAID_CHARGE_CANCEL_CNT}
+            ,    #{PREPAID_CHARGE_CANCEL_AMT}
+            )
+        }
+    </insert>
+    
+    <insert id="setPrepaidCardSaleDtl" parameterType="com.cesco.api.cesnetapi.res.models.PrepaidCardSaleDtl">
+        {
+            call CESCO_ACCOUNT.DBO.USP_Csn_Set_Restaurant_PrepaidCardSaleDTL
+            (
+                #{SALE_DATE}
+            ,    #{POS_NO}
+            ,    #{SEQ}
+            ,    #{PREPAID_NAME}
+            ,    #{CARD_NO}
+            ,    #{QTY}
+            ,    #{SALE_AMT}
+            ,    #{SALE_FLAG}
+            ,    #{PAYMENT_FLAG}
+            ,    #{APPR_NO}
+            ,    #{APPR_CARD_NO}
+            )
+        }
+    </insert>
+</mapper>

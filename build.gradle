@@ -1,0 +1,65 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+bootJar {
+	archiveFileName  = "app.jar"
+}
+
+group = 'com.cesco.api'
+version = '0.0.1'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { 
+		name = "cesco nexus"
+		url = uri("http://cesdocker.cesco.biz:9123/repository/cesco-maven2/") 
+		allowInsecureProtocol = true
+	}
+}
+
+dependencies {
+	
+	// mybatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+	
+	// mssql server
+	implementation 'com.microsoft.sqlserver:mssql-jdbc:8.4.1.jre11'
+
+	// springboot
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	
+	// json-simple
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+	// logback
+	implementation 'ch.qos.logback.contrib:logback-json-classic:0.1.5'
+	implementation 'ch.qos.logback.contrib:logback-jackson:0.1.5'
+
+	// lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// test
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+
+}
+
+test {
+	useJUnitPlatform()
+}

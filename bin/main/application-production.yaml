@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: 
+    username: 
+    password: 
+    hikari:
+      minimumIdle: 10
+      maximumPoolSize: 50
+      idleTimeout: 30000
+      poolName: main-pool
+      maxLifetime: 2000000
+      connectionTimeout: 30000
+
+---
+
+#mybatis 설정
+mybatis:
+  mapper-locations: classpath*:mappers/*/*.xml
+
+---
+
+#logging 설정
+logging:
+  logback:
+    rollingpolicy:
+      max-file-size: 50MB
+      max-history: 3
+  pattern:
+    console: "%clr(%d{${LOG_DATEFORMAT_PATTERN:yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(-){faint} %clr([%10.10t]){faint} %clr(%-30.30logger{29}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
+    file: "%clr(%d{${LOG_DATEFORMAT_PATTERN:yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(-){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
+  level:
+    root: warn

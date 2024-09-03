@@ -1,0 +1,58 @@
+version: '3.5'
+
+services:
+  servicename:
+    image: imagename
+    hostname: "{{.Service.Name}}-{{.Task.Slot}}"
+    networks: 
+      - backend
+      - proxy
+    ports:
+      - "8080:8080"
+    logging:
+      driver: "fluentd"
+      options:
+        tag: {{.Service.Name}}.log
+    environment:
+      - PROFILE=develop
+      - DBHOST=dbhost
+      - DBPORT=dbport
+      - DBUSERNAME_FILE=/run/secrets/cesnet-api-db-userid
+      - DBPASSWORD_FILE=/run/secrets/cesnet-api-db-pass
+      # jennifer-agent config
+      - JNF_SERVER_ADDRESS=192.168.50.247
+      - JNF_SERVER_PORT=5000
+      - JNF_DOMAIN_ID=jennifer-domain-id
+      - JNF_INSTANCE_ID=jennifer-instance-id{{.Task.Slot}}
+      - JNF_INSTANCE_NAME=servicename-{{.Task.Slot}}
+    secrets:
+      - cesnet-api-db-userid
+      - cesnet-api-db-pass
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 1G
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+  
+networks:
+  backend:
+    external: true
+  proxy:
+    external: true
+  
+secrets:
+  cesnet-api-db-userid:
+    external: true
+  cesnet-api-db-pass:
+    external: true
